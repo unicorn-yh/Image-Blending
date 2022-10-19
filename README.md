@@ -63,7 +63,7 @@ During the blending of the mask and the Laplacian pyramid, a Gaussian filter is 
 |                      |                      | ![](README/mask2.jpeg) | ![](README/finalblend3.png) | ![](README/finalblend4.png)                 |
 |                      |                      | ![](README/mask3.jpg)  | ![](README/finalblend5.png) | ![](README/finalblend6.png)                 |
 
-
+<br />
 
 #### **Woman faces 1**
 
@@ -73,7 +73,7 @@ During the blending of the mask and the Laplacian pyramid, a Gaussian filter is 
 |                        |                        | ![](README/mask2.jpeg) | ![](README/finalblend9.png)  | ![](README/finalblend10-166478268308320.png) |
 |                        |                        | ![](README/mask3.jpg)  | ![](README/finalblend11.png) | ![](README/finalblend12.png)                 |
 
-
+<br />
 
 #### **Woman faces 2**
 
@@ -83,7 +83,7 @@ During the blending of the mask and the Laplacian pyramid, a Gaussian filter is 
 |                        |                        | ![](README/mask2.jpeg) | ![](README/finalblend15.png) | ![](README/finalblend16.png) |
 |                        |                        | ![](README/mask3.jpg)  | ![](README/finalblend17.png) | ![](README/finalblend18.png) |
 
-
+<br />
 
 #### **Mountain view**
 
@@ -93,7 +93,7 @@ During the blending of the mask and the Laplacian pyramid, a Gaussian filter is 
 |                           |                           | ![](README/mask2.jpeg) | ![](README/finalblend21.png) | ![](README/finalblend22.png) |
 |                           |                           | ![](README/mask3.jpg)  | ![](README/finalblend23.png) | ![](README/finalblend24.png) |
 
-
+<br />
 
 #### **Fruits**
 
