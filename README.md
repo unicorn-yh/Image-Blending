@@ -32,17 +32,21 @@ Before solving the image mixing problem, the image needs to be decomposed into t
 The construction of Gaussian pyramids and Laplacian pyramids is the key in image mixing, and the core of building the above pyramids is upsampling and downsampling operations. Gaussian and Laplacian pyramids represent a set of images. Each layer of the Gaussian pyramid saves an image that compresses the original image by 2 times during each downsampling. In the process of downsampling, smoothing filtering is required to achieve the most effective image compression. If the smoothing filtering operation is lost, when the pixels are skipped for downsampling, important information in the image may be lost, and all the contrast regions at the downsampling granularity will be lost. 
 
 Smoothing filtering can reduce the strong contrast between the maximum frequency of the feature image and the loss of subsampling, and smooth the image by convolving the image with a Gaussian filter, essentially performing a Low Pass Filter on the image. The role of the low-pass filter is to preserve low-frequency information (ie, low-contrast areas) on the image and reduce high-frequency information (ie, edges in the image). The convolution has the following formula:
+
 $$
 g[m,n]=\dfrac{\sum_{k,\ l}(h[k,l]-\overline{h})(f[m+k,n+l]-\overline{f}_{m,\ n})}{\left(\sum_{k,\ l}(h[k,l]-\overline{h})^{2}\sum_{k,\ l}(f[m+k,n+l]-\overline{f}_{m,\ n})^{2}\right)^{0.5}}
 $$
+
 The zero-padding method is used to perform the above convolution operation on all pixels in the image. The image size of each layer of the Gaussian pyramid is reduced by a factor of 2. The higher the level of the Gaussian pyramid, the smaller and blurrier the image becomes. When constructing the i-th level Laplacian pyramid, it is necessary to upsample and interpolate the i+1-th level Gaussian pyramid image, and use the i-th level Gaussian pyramid image to subtract the i+1-th level Gaussian that has been upsampled before. pyramid image, so as to obtain the i-th Laplacian pyramid image. The Laplacian pyramid is essentially a high-pass filter that preserves only the edges of the image, i.e. high-frequency information.
 
 <img src="README/1lVZXdX3TszKswmqGivSc-g.png" alt="Image Blending Using Laplacian Pyramids | by Michelle Zhao | Becoming  Human: Artificial Intelligence Magazine" style="zoom: 67%;" />
 
 One of the most important elements in image mixing is upsampling, which involves image interpolation (Interpolation), that is, inserting a 0 between each pixel in the original image, and then low-pass filtering the image with a Gaussian filter to remove Imaging artifacts and anomalies caused by upsampling interpolation. Image mixing first needs to downsample and smooth the two images to construct their respective Gaussian pyramids, and then construct their respective Laplacian pyramids through the Gaussian pyramids. Then, the Laplacian pyramids of the two images are mixed together through the mask, and the original image is reconstructed through the composite Laplacian pyramid to obtain the final mixed original-scale image.
+
 $$
 Combined \ Laplacian_{k} = (Mask_{k} \times LaplacianA_{k})+((1-Mask_{k}) \times LaplacianB_{k})
 $$
+
 During the blending of the mask and the Laplacian pyramid, a Gaussian filter is applied to the subsampled mask to smooth the image blending as the input to the Laplacian. Multiply the mask Mask by the Laplacian of image A, multiply the Laplacian of image B by (1-Mask), and add the two to get the composite Laplacian pyramid, as shown in the formula . Reconstruct the original image at each level of Laplacian, multiply the upsampled and resized Gaussian original image by the respective mask, and then add the Laplacian image of that level. The above operation is to add the information and details lost when the image is up-sampled and down-sampled back to the Gaussian smoothed image, and finally form a mixed image of the original scale.
 
 <br />
