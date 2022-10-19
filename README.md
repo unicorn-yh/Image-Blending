@@ -13,7 +13,7 @@ This project realizes the principle and method of image mixing based on Gaussian
 
 Image blending is a very important operation in the field of computer vision, which aims to seamlessly blend the original image into the target image by using masks. Gaussian Pyramid and Laplacian Pyramid is a popular image mixing algorithm, which was first proposed by Burt and Adelson. It is a multi-scale and multi-resolution method. The image blending algorithm based on Gaussian pyramid and Laplacian pyramid decomposition is carried out on different scales, different spatial resolutions, and different decomposition layers, and can obtain better blending effects than simple image blending algorithms.
 
-
+<br />
 
 ## Problem Description
 
