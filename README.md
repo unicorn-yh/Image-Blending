@@ -33,9 +33,11 @@ The construction of Gaussian pyramids and Laplacian pyramids is the key in image
 
 Smoothing filtering can reduce the strong contrast between the maximum frequency of the feature image and the loss of subsampling, and smooth the image by convolving the image with a Gaussian filter, essentially performing a Low Pass Filter on the image. The role of the low-pass filter is to preserve low-frequency information (ie, low-contrast areas) on the image and reduce high-frequency information (ie, edges in the image). The convolution has the following formula:
 
-$$
-g[m,n]=\dfrac{\sum_{k,\ l}(h[k,l]-\overline{h})(f[m+k,n+l]-\overline{f}_{m,\ n})}{\left(\sum_{k,\ l}(h[k,l]-\overline{h})^{2}\sum_{k,\ l}(f[m+k,n+l]-\overline{f}_{m,\ n})^{2}\right)^{0.5}}
-$$
+
+<p align="center">
+  <img width="542" alt="convolution formula" src="https://github.com/user-attachments/assets/a008fcb0-e1d1-43f2-bc6a-3f4b87c0a9b4">
+</p>
+
 
 The zero-padding method is used to perform the above convolution operation on all pixels in the image. The image size of each layer of the Gaussian pyramid is reduced by a factor of 2. The higher the level of the Gaussian pyramid, the smaller and blurrier the image becomes. When constructing the i-th level Laplacian pyramid, it is necessary to upsample and interpolate the i+1-th level Gaussian pyramid image, and use the i-th level Gaussian pyramid image to subtract the i+1-th level Gaussian that has been upsampled before. pyramid image, so as to obtain the i-th Laplacian pyramid image. The Laplacian pyramid is essentially a high-pass filter that preserves only the edges of the image, i.e. high-frequency information.
 
